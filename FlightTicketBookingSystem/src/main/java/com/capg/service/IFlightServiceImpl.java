@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.capg.entity.Flight;
+import com.capg.entities.Flight;
 
 public class IFlightServiceImpl implements IFlightService {
 	

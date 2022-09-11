@@ -2,7 +2,7 @@ package com.capg.service;
 
 import java.util.List;
 
-import com.capg.entity.Flight;
+import com.capg.entities.Flight;
 
 public interface IFlightService {
 	

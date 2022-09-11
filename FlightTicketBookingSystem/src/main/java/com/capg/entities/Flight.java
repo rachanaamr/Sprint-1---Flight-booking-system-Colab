@@ -1,4 +1,4 @@
-package com.capg.entity;
+package com.capg.entities;
 
 
 public class Flight {
