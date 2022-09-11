@@ -1,85 +1,71 @@
-package com.capg.entities;
+package com.capg.entity;
 
-import java.util.Date;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-
-@Entity
 public class Flight {
 	
-	@Id
-	private int flightId;
-	private String src;
-	private String dest;
-	private String deptTime;
-	private String arrTime;
-	private int fare;
-	private Date date;
-	private int duration;
-	private int availableSeats;
-	
-	
-	public Flight() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Flight(int flightId, String src, String dest, String deptTime, String arrTime, int fare, Date date,
-			int duration, int availableSeats) {
+	int flightId;
+	String sourceLocation;
+	String destinationLocation;
+	String arrivalTime;
+	String departureTime;
+	String date;
+	double fare;
+	int duration;
+	int availableSeats;
+	public Flight(int flightId, String sourceLocation, String destinationLocation, String arrivalTime,
+			String departureTime, String date, double fare, int duration, int availableSeats) {
 		super();
 		this.flightId = flightId;
-		this.src = src;
-		this.dest = dest;
-		this.deptTime = deptTime;
-		this.arrTime = arrTime;
-		this.fare = fare;
+		this.sourceLocation = sourceLocation;
+		this.destinationLocation = destinationLocation;
+		this.arrivalTime = arrivalTime;
+		this.departureTime = departureTime;
 		this.date = date;
+		this.fare = fare;
 		this.duration = duration;
 		this.availableSeats = availableSeats;
 	}
-	
-	
 	public int getFlightId() {
 		return flightId;
 	}
 	public void setFlightId(int flightId) {
 		this.flightId = flightId;
 	}
-	public String getSrc() {
-		return src;
+	public String getSourceLocation() {
+		return sourceLocation;
 	}
-	public void setSrc(String src) {
-		this.src = src;
+	public void setSourceLocation(String sourceLocation) {
+		this.sourceLocation = sourceLocation;
 	}
-	public String getDest() {
-		return dest;
+	public String getDestinationLocation() {
+		return destinationLocation;
 	}
-	public void setDest(String dest) {
-		this.dest = dest;
+	public void setDestinationLocation(String destinationLocation) {
+		this.destinationLocation = destinationLocation;
 	}
-	public String getDeptTime() {
-		return deptTime;
+	public String getArrivalTime() {
+		return arrivalTime;
 	}
-	public void setDeptTime(String deptTime) {
-		this.deptTime = deptTime;
+	public void setArrivalTime(String arrivalTime) {
+		this.arrivalTime = arrivalTime;
 	}
-	public String getArrTime() {
-		return arrTime;
+	public String getDepartureTime() {
+		return departureTime;
 	}
-	public void setArrTime(String arrTime) {
-		this.arrTime = arrTime;
+	public void setDepartureTime(String departureTime) {
+		this.departureTime = departureTime;
 	}
-	public int getFare() {
-		return fare;
-	}
-	public void setFare(int fare) {
-		this.fare = fare;
-	}
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
+	}
+	public double getFare() {
+		return fare;
+	}
+	public void setFare(double fare) {
+		this.fare = fare;
 	}
 	public int getDuration() {
 		return duration;
@@ -93,8 +79,6 @@ public class Flight {
 	public void setAvailableSeats(int availableSeats) {
 		this.availableSeats = availableSeats;
 	}
-	
-	
 	
 	
 }
