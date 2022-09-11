@@ -1,5 +1,9 @@
 package com.capg.dao;
 
-public class IPassengerDAO {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.capg.entities.Passenger;
+
+public interface IPassengerDAO extends JpaRepository<Passenger, Integer>{
 
 }
