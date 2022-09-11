@@ -118,6 +118,8 @@ import javax.persistence.OneToMany;
 ======= */
 
 public class Passenger {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int passangerId;
 	private int bookingId;
 	private String firstName;

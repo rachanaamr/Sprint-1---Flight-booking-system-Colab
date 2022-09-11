@@ -15,6 +15,8 @@ import javax.persistence.Table;
 @Table(name = "Booking")
 public class Booking {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int bookingId;
 //	private int userId;
 //	private int flightId;
