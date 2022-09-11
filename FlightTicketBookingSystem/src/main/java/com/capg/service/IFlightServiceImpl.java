@@ -10,9 +10,9 @@ import com.capg.entities.Flight;
 public class IFlightServiceImpl implements IFlightService {
 	
 	List<Flight> list = new ArrayList<>(Arrays.asList(
-			new Flight(1, "Bengaluru", "Goa", "05:00", "8:00", "01-02-22", 1550, 3, 90),
-			new Flight(2, "Chennai", "Hyderabad", "19:00", "23:00", "10-09-22", 2550, 4, 120),
-			new Flight(3, "Mumbai", "Gandhinagar", "09:00", "14:00", "19-05-22", 4500, 5, 50)
+			new Flight(1, "Bengaluru", "Goa", "05:00", "8:00", "01-02-22", 1550, 90),
+			new Flight(2, "Chennai", "Hyderabad", "19:00", "23:00", "10-09-22", 2550, 120),
+			new Flight(3, "Mumbai", "Gandhinagar", "09:00", "14:00", "19-05-22", 4500, 50)
 			)); 
 	
 	@Override
@@ -48,7 +48,6 @@ public class IFlightServiceImpl implements IFlightService {
 				f.setDate(flight.getDate());
 				f.setDepartureTime(flight.getDepartureTime());
 				f.setDestinationLocation(flight.getDestinationLocation());
-				f.setDuration(flight.getDuration());
 				f.setFare(flight.getFare());
 				f.setSourceLocation(flight.getSourceLocation());
 			}

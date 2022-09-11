@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 package com.capg.entities;
 
 import javax.persistence.GeneratedValue;
@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
-public class Passenger {
+/*public class Passenger {
 
 	private int passengerId;
 	private String fname;
@@ -115,8 +115,7 @@ public class Passenger {
 	
 	
 }
-=======
-package com.capg.entities;
+======= */
 
 public class Passenger {
 	private int passangerId;
@@ -127,8 +126,10 @@ public class Passenger {
 	private char gender;
 	private String passportNumber;
 	private int seatNumber;
+	private Booking booking;
+	
 	public Passenger(int passangerId, int bookingId, String firstName, String lastName, int age, char gender,
-			String passportNumber, int seatNumber) {
+			String passportNumber, int seatNumber/*, Booking booking*/) {
 		super();
 		this.passangerId = passangerId;
 		this.bookingId = bookingId;
@@ -138,11 +139,15 @@ public class Passenger {
 		this.gender = gender;
 		this.passportNumber = passportNumber;
 		this.seatNumber = seatNumber;
+		//this.booking=booking;
 	}
 	public Passenger() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public int getPassangerId() {
 		return passangerId;
 	}
@@ -191,14 +196,25 @@ public class Passenger {
 	public void setSeatNumber(int seatNumber) {
 		this.seatNumber = seatNumber;
 	}
+	
+	@OneToMany
+	@JoinColumn(name = "bookingId")
+	public Booking getBooking() {
+		return booking;
+	}
+
+	public void setBooking(Booking booking) {
+		this.booking = booking;
+	}
+	
 	@Override
 	public String toString() {
 		return "Passenger [passangerId=" + passangerId + ", bookingId=" + bookingId + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", age=" + age + ", gender=" + gender + ", passportNumber="
-				+ passportNumber + ", seatNumber=" + seatNumber + "]";
+				+ passportNumber + ", seatNumber=" + seatNumber /*+",booking=\n" + booking*/ +"]";
 	}
 	
 	
 
 }
->>>>>>> branch 'master' of https://github.com/rachanaamr/Sprint-1---Flight-booking-system-Colab.git
+//>>>>>>> branch 'master' of https://github.com/rachanaamr/Sprint-1---Flight-booking-system-Colab.git

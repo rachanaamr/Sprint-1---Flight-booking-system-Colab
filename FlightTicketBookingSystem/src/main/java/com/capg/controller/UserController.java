@@ -35,7 +35,7 @@ public class UserController {
 	
 	//get user having specific userid
 	@GetMapping("/users/{userId}")
-	public User getUser(@PathVariable long userId) {
+	public User getUser(@PathVariable int userId) {
 		return this.userService.getUser(userId);
 	}
 	
@@ -53,7 +53,7 @@ public class UserController {
 	
 	//delete the user
 	@DeleteMapping("/users/{userId}")
-	public ResponseEntity<HttpStatus> deleteUser(@PathVariable long userId){
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable int userId){
 		try {
 			this.userService.deleteUser(userId);
 			return new ResponseEntity<>(HttpStatus.OK);

@@ -1,13 +1,18 @@
 package com.capg.entities;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="User")
 public class User {
 	
 	@Id
-	private long userId;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int userId;
 	private String firstName;
 	private String lastName;
 	private String email;
@@ -17,7 +22,7 @@ public class User {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(long userId, String firstName, String lastName, String email, String password, String contactNo) {
+	public User(int userId, String firstName, String lastName, String email, String password, String contactNo) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -29,7 +34,7 @@ public class User {
 	public long getUserId() {
 		return userId;
 	}
-	public void setUserId(long userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 	public String getFirstName() {

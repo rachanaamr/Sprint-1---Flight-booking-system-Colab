@@ -7,11 +7,11 @@ import com.capg.entities.User;
 public interface IUserService {
 	public List<User> getUsers();
 	
-	public User getUser(long userId);
+	public User getUser(int userId);
 	
 	public User addUser(User user);
 	
 	public User updateUser(User user);
 	
-	public void deleteUser(long userId);
+	public void deleteUser(int userId);
 }

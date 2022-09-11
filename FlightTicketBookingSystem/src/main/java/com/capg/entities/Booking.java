@@ -12,14 +12,14 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "booking")
+@Table(name = "Booking")
 public class Booking {
 
 	private int bookingId;
 //	private int userId;
 //	private int flightId;
-	private Date bookingDate;
-	private Date travelDate;
+	private String bookingDate;
+	//private String travelDate;
 	private double totalCost;
 	private int seatsBooked;
 	
@@ -32,14 +32,14 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, Date bookingDate, Date travelDate, double totalCost,
+	public Booking(int bookingId, String bookingDate, /*String travelDate,*/ double totalCost,
 			int seatsBooked) {
 		super();
 		this.bookingId = bookingId;
 //		this.userId = userId;
 //		this.flightId = flightId;
 		this.bookingDate = bookingDate;
-		this.travelDate = travelDate;
+		//this.travelDate = travelDate;
 		this.totalCost = totalCost;
 		this.seatsBooked = seatsBooked;
 	}
@@ -54,21 +54,21 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
-	public Date getBookingDate() {
+	public String getBookingDate() {
 		return bookingDate;
 	}
 
-	public void setBookingDate(Date bookingDate) {
+	public void setBookingDate(String bookingDate) {
 		this.bookingDate = bookingDate;
 	}
 
-	public Date getTravelDate() {
+	/*public String getTravelDate() {
 		return travelDate;
 	}
 
-	public void setTravelDate(Date travelDate) {
+	public void setTravelDate(String travelDate) {
 		this.travelDate = travelDate;
-	}
+	}*/
 
 	public double getTotalCost() {
 		return totalCost;
@@ -110,8 +110,8 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate + ", travelDate=" + travelDate 
-				+ ", totalCost=" + totalCost + ", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
+		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate +/* ", travelDate=" + travelDate 
+				+ */", totalCost=" + totalCost + ", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
 				+ flight + "]";
 	}
 }

@@ -23,7 +23,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public User getUser(long userId) {
+	public User getUser(int userId) {
 		
 		User u =null;
 		for(User user:user_list) {
@@ -59,7 +59,7 @@ public class UserServiceImpl implements IUserService{
 	}
 
 	@Override
-	public void deleteUser(long userId) {
+	public void deleteUser(int userId) {
 		user_list=this.user_list.stream().filter(e->(e.getUserId()!=userId)).collect(Collectors.toList());
 		
 	}
