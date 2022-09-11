@@ -125,12 +125,12 @@ public class Passenger {
 	private String firstName;
 	private String lastName;
 	private int age;
-	private char gender;
+	private String gender;
 	private String passportNumber;
 	private int seatNumber;
 	private Booking booking;
 	
-	public Passenger(int passangerId, int bookingId, String firstName, String lastName, int age, char gender,
+	public Passenger(int passangerId, int bookingId, String firstName, String lastName, int age, String gender,
 			String passportNumber, int seatNumber/*, Booking booking*/) {
 		super();
 		this.passangerId = passangerId;
@@ -180,10 +180,10 @@ public class Passenger {
 	public void setAge(int age) {
 		this.age = age;
 	}
-	public char getGender() {
+	public String getGender() {
 		return gender;
 	}
-	public void setGender(char gender) {
+	public void setGender(String gender) {
 		this.gender = gender;
 	}
 	public String getPassportNumber() {
