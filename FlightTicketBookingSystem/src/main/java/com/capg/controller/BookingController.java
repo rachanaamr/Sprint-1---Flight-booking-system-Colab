@@ -40,13 +40,9 @@ public class BookingController {
 		return this.service.updateBooking(booking);
 	}
 	@DeleteMapping("/booking/{bookingId}")
-	public ResponseEntity<HttpStatus> deleteEmployee(@PathVariable int bookingId) {
-		try {
+	public void deleteEmployee(@PathVariable int bookingId) {
+		
 		this.service.deleteBooking(bookingId);
-		return new ResponseEntity<HttpStatus>(HttpStatus.OK);
-		}
-		catch(Exception ex) {
-			return new ResponseEntity<HttpStatus>(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
+		
 	}
 }
