@@ -5,10 +5,53 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capg.dao.IFlightDAO;
 import com.capg.entities.Flight;
 
+@Service
 public class IFlightServiceImpl implements IFlightService {
+
+	@Autowired
+	IFlightDAO flightDao;
 	
+	@Override
+	public List<Flight> getFlightDetails() {
+		// TODO Auto-generated method stub
+		return flightDao.findAll();
+	}
+
+	@Override
+	public Flight getFlightDetailsById(int flightId) {
+		// TODO Auto-generated method stub
+		return flightDao.findById(flightId).get();
+	}
+
+	@Override
+	public Flight addFlight(Flight flight) {
+		// TODO Auto-generated method stub
+		flightDao.save(flight);
+		return flight;
+	}
+
+	@Override
+	public Flight updateFlight(Flight flight) {
+		// TODO Auto-generated method stub
+		flightDao.save(flight);
+		return flight;
+	}
+
+	@Override
+	public void deleteFlight(int flightId) {
+		// TODO Auto-generated method stub
+		Flight f = flightDao.getOne(flightId);
+		flightDao.delete(f);
+		
+	}
+	
+	/*
 	List<Flight> list = new ArrayList<>(Arrays.asList(
 			new Flight(1, "Bengaluru", "Goa", "05:00", "8:00", "01-02-22", 1550, 90),
 			new Flight(2, "Chennai", "Hyderabad", "19:00", "23:00", "10-09-22", 2550, 120),
@@ -59,4 +102,5 @@ public class IFlightServiceImpl implements IFlightService {
 	public void deleteFlight(int flightId) {
 		this.list = list.stream().filter(f->f.getFlightId()!=flightId).collect(Collectors.toList());
 	}
+	*/
 }

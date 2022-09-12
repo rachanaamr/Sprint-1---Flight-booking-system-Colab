@@ -3,19 +3,61 @@ package com.capg.service;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capg.dao.IPassengerDAO;
 import com.capg.entities.Passenger;
 
 @Service
 public class PassengerServiceImpl implements IPassengerService{
+
 	
+	@Autowired
+	IPassengerDAO passengerDao;
+	
+	
+	@Override
+	public List<Passenger> getPassengers() {
+		// TODO Auto-generated method stub
+		return passengerDao.findAll();
+	}
+
+	@Override
+	public Passenger getPassengerById(int passengerId) {
+		// TODO Auto-generated method stub
+		return passengerDao.findById(passengerId).get();
+	}
+
+	@Override
+	public Passenger addPassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		passengerDao.save(passenger);
+		return passenger;
+	}
+
+	@Override
+	public Passenger updatePassenger(Passenger passenger) {
+		// TODO Auto-generated method stub
+		passengerDao.save(passenger);
+		return passenger;
+	}
+
+	@Override
+	public void deletePassenger(int passengerId) {
+		// TODO Auto-generated method stub
+		Passenger p = passengerDao.getOne(passengerId);
+		passengerDao.delete(p);
+		
+	}
+	
+	/*
 	List<Passenger> lst;
 	public PassengerServiceImpl()
 	{
 		lst = new ArrayList<Passenger>();
-		lst.add(new Passenger(1001,2001,"Rachanaa", "Raghuthama",22,'F',"123gh45678",25));
-		lst.add(new Passenger(1002,2001,"Rakshita", "Raghuthama",17,'F',"987ik4216",26));
+		lst.add(new Passenger(1001,"Rachanaa", "Raghuthama",22,"F","123gh45678",25));
+		lst.add(new Passenger(1002,"Rakshita", "Raghuthama",17,"F","987ik4216",26));
 	}
 
 	@Override
@@ -50,7 +92,7 @@ public class PassengerServiceImpl implements IPassengerService{
 	public Passenger updatePassenger(Passenger passenger) {
 		// TODO Auto-generated method stub
 		lst.forEach(t->{if(t.getPassangerId()==passenger.getPassangerId()) {
-			t.setBookingId(passenger.getBookingId());
+			//t.setBookingId(passenger.getBookingId());
 			t.setFirstName(passenger.getFirstName());
 			t.setLastName(passenger.getLastName());
 			t.setAge(passenger.getAge());
@@ -70,6 +112,6 @@ public class PassengerServiceImpl implements IPassengerService{
 		
 	}
 	
-	
+	*/
 	
 }

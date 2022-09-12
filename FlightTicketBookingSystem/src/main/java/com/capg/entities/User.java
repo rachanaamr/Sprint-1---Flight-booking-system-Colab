@@ -1,5 +1,6 @@
 package com.capg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,18 +12,24 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="userid")
 	private int userId;
+	@Column(name="firstname")
 	private String firstName;
+	@Column(name="lastname")
 	private String lastName;
+	@Column(name="email")
 	private String email;
+	@Column(name="password")
 	private String password;
+	@Column(name="contactno")
 	private String contactNo;
 	public User() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public User(int userId, String firstName, String lastName, String email, String password, String contactNo) {
+	public User(int userId, String firstName,String lastName, String email, String password, String contactNo) {
 		super();
 		this.userId = userId;
 		this.firstName = firstName;
@@ -69,7 +76,7 @@ public class User {
 	}
 	@Override
 	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName +", email=" + email
 				+ ", password=" + password + ", contactNo=" + contactNo + "]";
 	}
 	

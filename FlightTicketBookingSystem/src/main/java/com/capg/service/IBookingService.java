@@ -2,13 +2,14 @@ package com.capg.service;
 
 import java.util.List;
 
-import com.capg.entities.*;
+import org.springframework.stereotype.Repository;
 
+import com.capg.entities.*;
 
 public interface IBookingService {
 	public List<Booking> getBooking();
-	public Booking getBookingById(int employeeId);
-	public Booking addBooking(Booking employee);
-	public Booking updateBooking(Booking employee);
-	public void deleteBooking(int employeeId);
+	public Booking getBookingById(int bookingId);
+	public Booking addBooking(Booking booking);
+	public Booking updateBooking(Booking booking);
+	public void deleteBooking(int bookingId);
 }

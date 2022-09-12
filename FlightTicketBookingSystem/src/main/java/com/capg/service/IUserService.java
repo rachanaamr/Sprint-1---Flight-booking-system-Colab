@@ -2,7 +2,10 @@ package com.capg.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.capg.entities.User;
+
 
 public interface IUserService {
 	public List<User> getUsers();

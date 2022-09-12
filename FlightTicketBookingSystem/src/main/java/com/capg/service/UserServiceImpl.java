@@ -4,9 +4,52 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.capg.dao.IUserDao;
 import com.capg.entities.User;
 
+@Service
 public class UserServiceImpl implements IUserService{
+
+	@Autowired
+	IUserDao userDao;
+	@Override
+	public List<User> getUsers() {
+		// TODO Auto-generated method stub
+		return userDao.findAll();
+	}
+
+	@Override
+	public User getUser(int userId) {
+		// TODO Auto-generated method stub
+		
+		return userDao.findById(userId).get();
+	}
+
+	@Override
+	public User addUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.save(user);
+		return user;
+	}
+
+	@Override
+	public User updateUser(User user) {
+		// TODO Auto-generated method stub
+		userDao.save(user);
+		return user;
+	}
+
+	@Override
+	public void deleteUser(int userId) {
+		// TODO Auto-generated method stub
+		User u = userDao.getOne(userId);
+		userDao.delete(u);
+	}
+	
+	/*
 	List<User> user_list;
 	
 	public UserServiceImpl() {
@@ -63,4 +106,5 @@ public class UserServiceImpl implements IUserService{
 		user_list=this.user_list.stream().filter(e->(e.getUserId()!=userId)).collect(Collectors.toList());
 		
 	}
+	*/
 }

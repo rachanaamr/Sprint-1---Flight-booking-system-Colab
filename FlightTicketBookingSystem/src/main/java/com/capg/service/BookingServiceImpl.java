@@ -8,12 +8,16 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.capg.dao.IBookingDAO;
 import com.capg.entities.*;
+import com.capg.dao.*;
 
 
 
 @Service
 public class BookingServiceImpl implements IBookingService{
+	
+	/*
 	List<Booking> list = new ArrayList<>(Arrays.asList(
 			new Booking(101, "01-01-2022", 30000.0, 3),
 			new Booking(102, "02-02-2022", 25000.0, 2),
@@ -59,5 +63,41 @@ public class BookingServiceImpl implements IBookingService{
 	@Override
 	public void deleteBooking(int bookingId) {
 		this.list = list.stream().filter(b->b.getBookingId()!=bookingId).collect(Collectors.toList());
+	}
+	
+	*/
+	
+	@Autowired
+	private IBookingDAO bookingdao;
+
+	@Override
+	public List<Booking> getBooking() {
+		
+		return bookingdao.findAll();
+	}
+
+	@Override
+	public Booking addBooking(Booking booking) {
+		bookingdao.save(booking);
+		return booking;
+	}
+
+	@Override
+	public Booking updateBooking(Booking booking) {
+		bookingdao.save(booking);
+		return booking;
+	}
+
+	@Override
+	public Booking getBookingById(int bookingId) {
+		// TODO Auto-generated method stub
+		return bookingdao.findById(bookingId).get();
+	}
+
+	@Override
+	public void deleteBooking(int bookingId) {
+		// TODO Auto-generated method stub
+		Booking b = bookingdao.getOne(bookingId);
+		bookingdao.delete(b);
 	}
 }

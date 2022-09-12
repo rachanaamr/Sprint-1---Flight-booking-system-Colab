@@ -1,5 +1,6 @@
 package com.capg.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,19 +10,27 @@ import javax.persistence.Table;
 import org.hibernate.annotations.GeneratorType;
 
 @Entity
-@Table(name="Flight")
+@Table(name="flight")
 public class Flight {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name ="flightid")
 	int flightId;
+	@Column(name ="source")
 	String sourceLocation;
+	@Column(name ="destination")
 	String destinationLocation;
-	String arrivalTime;
+	@Column(name ="departure")
 	String departureTime;
+	@Column(name ="arrival")
+	String arrivalTime;
+	@Column(name ="traveldate")
 	String date;
+	@Column(name ="fare")
 	double fare;
 	//double duration;
+	@Column(name ="availableseats")
 	int availableSeats;
 	public Flight(int flightId, String sourceLocation, String destinationLocation, String arrivalTime,
 			String departureTime, String date, double fare, /*double duration,*/ int availableSeats) {
@@ -36,6 +45,12 @@ public class Flight {
 		//this.duration = duration;
 		this.availableSeats = availableSeats;
 	}
+	
+	public Flight() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getFlightId() {
 		return flightId;
 	}
@@ -66,6 +81,7 @@ public class Flight {
 	public void setDepartureTime(String departureTime) {
 		this.departureTime = departureTime;
 	}
+	@Column(name="travelDate")
 	public String getDate() {
 		return date;
 	}
@@ -89,6 +105,13 @@ public class Flight {
 	}
 	public void setAvailableSeats(int availableSeats) {
 		this.availableSeats = availableSeats;
+	}
+
+	@Override
+	public String toString() {
+		return "Flight [flightId=" + flightId + ", sourceLocation=" + sourceLocation + ", destinationLocation="
+				+ destinationLocation + ", departureTime=" + departureTime + ", arrivalTime=" + arrivalTime + ", date="
+				+ date + ", fare=" + fare + ", availableSeats=" + availableSeats + "]";
 	}
 	
 	

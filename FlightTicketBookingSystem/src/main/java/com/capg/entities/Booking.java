@@ -1,28 +1,27 @@
 package com.capg.entities;
 
-import java.util.Date;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "Booking")
+@Table(name = "booking")
 public class Booking {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	
 	private int bookingId;
-//	private int userId;
-//	private int flightId;
+
+	private int userId;
+	private int flightId;
+	
 	private String bookingDate;
 	//private String travelDate;
+	
 	private double totalCost;
+	
 	private int seatsBooked;
 	
 	private User user;
@@ -34,20 +33,20 @@ public class Booking {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, String bookingDate, /*String travelDate,*/ double totalCost,
+	public Booking(int bookingId, int userId, int flightId,String bookingDate, /*String travelDate, double totalCost,*/
 			int seatsBooked) {
 		super();
 		this.bookingId = bookingId;
-//		this.userId = userId;
-//		this.flightId = flightId;
+		this.userId = userId;
+		this.flightId = flightId;
 		this.bookingDate = bookingDate;
 		//this.travelDate = travelDate;
-		this.totalCost = totalCost;
+		//this.totalCost = totalCost;
 		this.seatsBooked = seatsBooked;
 	}
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="bookingid")
 	public int getBookingId() {
 		return bookingId;
 	}
@@ -56,6 +55,7 @@ public class Booking {
 		this.bookingId = bookingId;
 	}
 
+	@Column(name="bookingdate")
 	public String getBookingDate() {
 		return bookingDate;
 	}
@@ -72,6 +72,7 @@ public class Booking {
 		this.travelDate = travelDate;
 	}*/
 
+	@Column(name="totalcost")
 	public double getTotalCost() {
 		return totalCost;
 	}
@@ -80,6 +81,7 @@ public class Booking {
 		this.totalCost = totalCost;
 	}
 
+	@Column(name="seatsbooked")
 	public int getSeatsBooked() {
 		return seatsBooked;
 	}
@@ -89,8 +91,26 @@ public class Booking {
 	}
 	
 
+	@Column(name="userid")
+	public int getUserId() {
+		return userId;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+
+	@Column(name="flightid")
+	public int getFlightId() {
+		return flightId;
+	}
+
+	public void setFlightId(int flightId) {
+		this.flightId = flightId;
+	}
+
 	@OneToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "userid", insertable = false, updatable = false)
 	public User getUser() {
 		return user;
 	}
@@ -100,8 +120,8 @@ public class Booking {
 	}
 
 	
-	@OneToMany
-	@JoinColumn(name = "flightId")
+	@OneToOne
+	@JoinColumn(name = "flightid", insertable = false, updatable = false)
 	public Flight getFlight() {
 		return flight;
 	}
@@ -113,7 +133,7 @@ public class Booking {
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate +/* ", travelDate=" + travelDate 
-				+ */", totalCost=" + totalCost + ", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
+				+ ", totalCost=" + totalCost + */", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
 				+ flight + "]";
 	}
 }

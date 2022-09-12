@@ -1,11 +1,15 @@
 
 package com.capg.entities;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 /*public class Passenger {
 
@@ -116,11 +120,11 @@ import javax.persistence.OneToMany;
 	
 }
 ======= */
-
+@Entity
+@Table(name="passenger")
 public class Passenger {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int passangerId;
+	
+	private int passengerId;
 	private int bookingId;
 	private String firstName;
 	private String lastName;
@@ -130,10 +134,10 @@ public class Passenger {
 	private int seatNumber;
 	private Booking booking;
 	
-	public Passenger(int passangerId, int bookingId, String firstName, String lastName, int age, String gender,
+	public Passenger(int passengerId, int bookingId, String firstName, String lastName, int age, String gender,
 			String passportNumber, int seatNumber/*, Booking booking*/) {
 		super();
-		this.passangerId = passangerId;
+		this.passengerId = passengerId;
 		this.bookingId = bookingId;
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -149,49 +153,60 @@ public class Passenger {
 	}
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="passengerid")
 	public int getPassangerId() {
-		return passangerId;
+		return passengerId;
 	}
 	public void setPassangerId(int passangerId) {
-		this.passangerId = passangerId;
+		this.passengerId = passangerId;
 	}
-	public int getBookingId() {
-		return bookingId;
-	}
-	public void setBookingId(int bookingId) {
-		this.bookingId = bookingId;
-	}
+//	public int getBookingId() {
+//		return bookingId;
+//	}
+//	public void setBookingId(int bookingId) {
+//		this.bookingId = bookingId;
+//	}
+	@Column(name="firstname")
 	public String getFirstName() {
 		return firstName;
 	}
 	public void setFirstName(String firstName) {
 		this.firstName = firstName;
 	}
+	
+	@Column(name="lastname")
 	public String getLastName() {
 		return lastName;
 	}
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
+	
+	@Column(name="age")
 	public int getAge() {
 		return age;
 	}
 	public void setAge(int age) {
 		this.age = age;
 	}
+	
+	@Column(name="gender")
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
+	
+	@Column(name="passport")
 	public String getPassportNumber() {
 		return passportNumber;
 	}
 	public void setPassportNumber(String passportNumber) {
 		this.passportNumber = passportNumber;
 	}
+	
+	@Column(name="seatnumber")
 	public int getSeatNumber() {
 		return seatNumber;
 	}
@@ -199,8 +214,8 @@ public class Passenger {
 		this.seatNumber = seatNumber;
 	}
 	
-	@OneToMany
-	@JoinColumn(name = "bookingId")
+	@OneToOne
+	@JoinColumn(name = "bookingid" , insertable = false, updatable = false)
 	public Booking getBooking() {
 		return booking;
 	}
@@ -211,7 +226,7 @@ public class Passenger {
 	
 	@Override
 	public String toString() {
-		return "Passenger [passangerId=" + passangerId + ", bookingId=" + bookingId + ", firstName=" + firstName
+		return "Passenger [passangerId=" + passengerId + ", bookingId=" + bookingId + ", firstName=" + firstName
 				+ ", lastName=" + lastName + ", age=" + age + ", gender=" + gender + ", passportNumber="
 				+ passportNumber + ", seatNumber=" + seatNumber /*+",booking=\n" + booking*/ +"]";
 	}
