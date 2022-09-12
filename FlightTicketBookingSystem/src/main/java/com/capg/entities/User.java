@@ -38,7 +38,7 @@ public class User {
 		this.password = password;
 		this.contactNo = contactNo;
 	}
-	public long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {

@@ -10,9 +10,11 @@ import org.springframework.stereotype.Service;
 
 import com.capg.dao.IFlightDAO;
 import com.capg.entities.Flight;
+import com.capg.exceptions.FlightAlreadyExistsException;
+import com.capg.exceptions.FlightNotFoundException;
 
 @Service
-public class IFlightServiceImpl implements IFlightService {
+public class FlightServiceImpl implements IFlightService {
 
 	@Autowired
 	IFlightDAO flightDao;
@@ -26,12 +28,18 @@ public class IFlightServiceImpl implements IFlightService {
 	@Override
 	public Flight getFlightDetailsById(int flightId) {
 		// TODO Auto-generated method stub
+		if(flightDao.findById(flightId).isEmpty()) {
+			throw new FlightNotFoundException();
+		}
 		return flightDao.findById(flightId).get();
 	}
 
 	@Override
 	public Flight addFlight(Flight flight) {
 		// TODO Auto-generated method stub
+		if(flightDao.existsById(flight.getFlightId())) {
+			throw new FlightAlreadyExistsException();
+		}
 		flightDao.save(flight);
 		return flight;
 	}
@@ -39,6 +47,9 @@ public class IFlightServiceImpl implements IFlightService {
 	@Override
 	public Flight updateFlight(Flight flight) {
 		// TODO Auto-generated method stub
+		if(flightDao.findById(flight.getFlightId()).isEmpty()) {
+			throw new FlightNotFoundException();
+		}
 		flightDao.save(flight);
 		return flight;
 	}
@@ -46,6 +57,9 @@ public class IFlightServiceImpl implements IFlightService {
 	@Override
 	public void deleteFlight(int flightId) {
 		// TODO Auto-generated method stub
+		if(flightDao.findById(flightId).isEmpty()) {
+			throw new FlightNotFoundException();
+		}
 		Flight f = flightDao.getOne(flightId);
 		flightDao.delete(f);
 		

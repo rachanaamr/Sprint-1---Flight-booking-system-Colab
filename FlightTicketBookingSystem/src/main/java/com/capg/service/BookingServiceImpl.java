@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 
 import com.capg.dao.IBookingDAO;
 import com.capg.entities.*;
+import com.capg.exceptions.BookingAlreadyExistsException;
+import com.capg.exceptions.BookingNotFoundException;
 import com.capg.dao.*;
 
 
@@ -78,12 +80,18 @@ public class BookingServiceImpl implements IBookingService{
 
 	@Override
 	public Booking addBooking(Booking booking) {
+		if(bookingdao.existsById(booking.getBookingId())) {
+			throw new BookingAlreadyExistsException();
+		}
 		bookingdao.save(booking);
 		return booking;
 	}
 
 	@Override
 	public Booking updateBooking(Booking booking) {
+		if(bookingdao.findById(booking.getBookingId()).isEmpty()) {
+			throw new BookingNotFoundException();
+		}
 		bookingdao.save(booking);
 		return booking;
 	}
@@ -91,12 +99,18 @@ public class BookingServiceImpl implements IBookingService{
 	@Override
 	public Booking getBookingById(int bookingId) {
 		// TODO Auto-generated method stub
+		if(bookingdao.findById(bookingId).isEmpty()) {
+			throw new BookingNotFoundException();
+		}
 		return bookingdao.findById(bookingId).get();
 	}
 
 	@Override
 	public void deleteBooking(int bookingId) {
 		// TODO Auto-generated method stub
+		if(bookingdao.findById(bookingId).isEmpty()) {
+			throw new BookingNotFoundException();
+		}
 		Booking b = bookingdao.getOne(bookingId);
 		bookingdao.delete(b);
 	}

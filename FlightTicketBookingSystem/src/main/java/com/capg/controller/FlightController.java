@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.entities.Flight;
+import com.capg.exceptions.FlightAlreadyExistsException;
+import com.capg.exceptions.FlightNotFoundException;
 import com.capg.service.IFlightService;
 
 @RestController
@@ -28,22 +30,22 @@ public class FlightController {
 	}
 	
 	@GetMapping("/flights/{flightid}")
-	public Flight getFlightDetailsById(@PathVariable("flightid") int flightid){
+	public Flight getFlightDetailsById(@PathVariable("flightid") int flightid) throws FlightNotFoundException{
 		return this.flightService.getFlightDetailsById(flightid);		
 	}
 	
 	@PostMapping("/flights")
-	public Flight addFlightDetails(@RequestBody Flight flight) {
+	public Flight addFlightDetails(@RequestBody Flight flight) throws FlightAlreadyExistsException{
 		return this.flightService.addFlight(flight);
 	}
 	
 	@PutMapping("/flights")
-	public Flight updateFlightDetails(@RequestBody Flight flight) {
+	public Flight updateFlightDetails(@RequestBody Flight flight) throws FlightNotFoundException{
 		return this.flightService.updateFlight(flight);
 	}
 	
 	@DeleteMapping("/flights/{flightid}")
-	public void deleteFlightDetails(@PathVariable("flightid") int flightid) {
+	public void deleteFlightDetails(@PathVariable("flightid") int flightid) throws FlightNotFoundException{
 		this.flightService.deleteFlight(flightid);
 	}
 }
