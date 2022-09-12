@@ -1,3 +1,4 @@
+
 package com.capg.exceptions;
 
 import org.springframework.beans.factory.annotation.Value;
