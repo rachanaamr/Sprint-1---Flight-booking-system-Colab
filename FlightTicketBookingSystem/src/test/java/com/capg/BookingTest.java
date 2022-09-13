@@ -34,7 +34,7 @@ class BookingTest {
 		userDao.save(u);
 		Flight f=new Flight(222, "Bengaluru", "Goa", "05:00", "8:00", "01-02-22", 1550, 90);
 		flightDao.save(f);
-		Booking b=new Booking(333, 111,222,"10-01-2022", 3);
+		Booking b=new Booking(333, 111,222,"10-01-2022",6000.5, 3);
 		bookingDao.save(b);
 		Booking book=bookingDao.findById(333).get();
 		assertEquals(book.getBookingId(),b.getBookingId());
