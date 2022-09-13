@@ -13,5 +13,6 @@ public interface IPassengerService {
 	public Passenger addPassenger(Passenger passenger);
 	public Passenger updatePassenger(Passenger passenger);
 	public void deletePassenger(int passengerId);
+	public List<Passenger> getPassengersByBookingId(int bookingId);
 
 }

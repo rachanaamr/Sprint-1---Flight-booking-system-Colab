@@ -1,12 +1,17 @@
 package com.capg.entities;
 
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.capg.service.IPassengerService;
 
 @Entity
 @Table(name = "booking")
@@ -29,13 +34,13 @@ public class Booking {
 	private Flight flight;
 	
 	
-	//private List<Passenger> passengers;
+//	private List<Passenger> passengers;
 
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
+	
 	public Booking(int bookingId, int userId, int flightId,String bookingDate, /*String travelDate, */double totalCost,
 			int seatsBooked) {
 		super();

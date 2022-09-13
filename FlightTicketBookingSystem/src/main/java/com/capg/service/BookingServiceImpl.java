@@ -12,6 +12,8 @@ import com.capg.dao.IBookingDAO;
 import com.capg.entities.*;
 import com.capg.exceptions.BookingAlreadyExistsException;
 import com.capg.exceptions.BookingNotFoundException;
+import com.capg.exceptions.FlightNotFoundException;
+import com.capg.exceptions.UserNotFoundException;
 import com.capg.dao.*;
 
 
@@ -114,4 +116,36 @@ public class BookingServiceImpl implements IBookingService{
 		Booking b = bookingdao.getOne(bookingId);
 		bookingdao.delete(b);
 	}
+
+	@Override
+	public List<Booking> getBookingsByFlightId(int flightId) {
+		// TODO Auto-generated method stub
+		List<Booking> bookings = new ArrayList<>();
+		for(Booking b : bookingdao.findAll())
+		{
+			if(b.getFlightId()==flightId)
+			{	
+				bookings.add(b);
+			}
+		}
+		if(bookings.isEmpty()) throw new FlightNotFoundException();
+		return bookings;
+		
+	}
+
+	@Override
+	public List<Booking> getBookingsByUserId(int userId) {
+		// TODO Auto-generated method stub
+		List<Booking> bookings = new ArrayList<>();
+		for(Booking b : bookingdao.findAll())
+		{
+			if(b.getUserId()==userId)
+			{	
+				bookings.add(b);
+			}
+		}
+		if(bookings.isEmpty()) throw new UserNotFoundException();
+		return bookings;
+	}
+
 }

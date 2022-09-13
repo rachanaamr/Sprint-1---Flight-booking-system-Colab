@@ -45,4 +45,18 @@ public class BookingController {
 		this.service.deleteBooking(bookingId);
 		
 	}
+	
+	@GetMapping("/booking/flight/{flightId}")
+	public List<Booking> getBookingsByFlightId(@PathVariable int flightId)
+	{
+		System.out.println("All bookings for flightId");
+		return this.service.getBookingsByFlightId(flightId);
+	}
+	
+	@GetMapping("/booking/user/{userId}")
+	public List<Booking> getBookingsByUserId(@PathVariable int userId)
+	{
+		System.out.println("All bookings for flightId");
+		return this.service.getBookingsByUserId(userId);
+	}
 }

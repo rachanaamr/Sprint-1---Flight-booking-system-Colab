@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.capg.dao.IPassengerDAO;
 import com.capg.entities.Passenger;
+import com.capg.exceptions.BookingNotFoundException;
 import com.capg.exceptions.PassengerAlreadyExistsException;
 import com.capg.exceptions.PassengerNotFoundException;
 
@@ -60,6 +61,21 @@ public class PassengerServiceImpl implements IPassengerService{
 		Passenger p = passengerDao.getOne(passengerId);
 		passengerDao.delete(p);
 		
+	}
+
+	@Override
+	public List<Passenger> getPassengersByBookingId(int bookingId) {
+		// TODO Auto-generated method stub
+		List<Passenger> passengers = new ArrayList<>();
+		for(Passenger p : passengerDao.findAll())
+		{
+			if(p.getBookingId()==bookingId)
+			{	
+				passengers.add(p);
+			}
+		}
+		if(passengers.isEmpty()) throw new BookingNotFoundException();
+		return passengers;
 	}
 	
 	/*

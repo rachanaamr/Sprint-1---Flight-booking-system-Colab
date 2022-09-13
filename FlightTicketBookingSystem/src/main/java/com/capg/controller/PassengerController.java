@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.entities.Passenger;
+import com.capg.exceptions.BookingNotFoundException;
 import com.capg.exceptions.PassengerAlreadyExistsException;
 import com.capg.exceptions.PassengerNotFoundException;
 import com.capg.service.IPassengerService;
@@ -57,4 +58,10 @@ public class PassengerController {
 		this.service.deletePassenger(passengerId);
 	}
 
+	@GetMapping("/passenger/booking/{bookingId}")
+	public List<Passenger> getPassengersByBookingId(@PathVariable int bookingId) throws BookingNotFoundException
+	{
+		System.out.println("All passengers with same bookingId");
+		return this.service.getPassengersByBookingId(bookingId);
+	}
 }
