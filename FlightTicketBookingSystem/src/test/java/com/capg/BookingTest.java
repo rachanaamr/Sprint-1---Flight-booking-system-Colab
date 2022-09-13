@@ -29,7 +29,7 @@ class BookingTest {
 	}
 	
 	@Test
-	void testAddFlight() {
+	void testAddBooking() {
 		User u=new User(111, "personA", "lastA", "A@gmail.com", "##44", "9156666666");
 		userDao.save(u);
 		Flight f=new Flight(222, "Bengaluru", "Goa", "05:00", "8:00", "01-02-22", 1550, 90);
