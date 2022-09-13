@@ -1,10 +1,15 @@
 package com.capg.entities;
 
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -27,13 +32,16 @@ public class Booking {
 	private User user;
 	
 	private Flight flight;
+	
+	
+	//private List<Passenger> passengers;
 
 	public Booking() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Booking(int bookingId, int userId, int flightId,String bookingDate, /*String travelDate, double totalCost,*/
+	public Booking(int bookingId, int userId, int flightId,String bookingDate, /*String travelDate, */double totalCost,
 			int seatsBooked) {
 		super();
 		this.bookingId = bookingId;
@@ -41,10 +49,11 @@ public class Booking {
 		this.flightId = flightId;
 		this.bookingDate = bookingDate;
 		//this.travelDate = travelDate;
-		//this.totalCost = totalCost;
+		this.totalCost = totalCost;
 		this.seatsBooked = seatsBooked;
 	}
 
+	
 	@Id
 	@Column(name="bookingid")
 	public int getBookingId() {
@@ -130,10 +139,21 @@ public class Booking {
 		this.flight = flight;
 	}
 
+//	@OneToMany(mappedBy = "booking")
+//	public List<Passenger> getPassengers() {
+//		return passengers;
+//	}
+//
+//	public void setPassengers(List<Passenger> passengers) {
+//		this.passengers = passengers;
+//	}
+
 	@Override
 	public String toString() {
 		return "Booking [bookingId=" + bookingId + ", bookingDate=" + bookingDate +/* ", travelDate=" + travelDate 
-				+ ", totalCost=" + totalCost + */", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
+				+ */", totalCost=" + totalCost + ", seatsBooked=" + seatsBooked + ", user=" + user + ", flight=" 
 				+ flight + "]";
 	}
+	
+	//List<Passenger> passengers = passengers.stream().filter(t->t.getBookingId()==bookingId).collect(Collectors.toList());
 }
