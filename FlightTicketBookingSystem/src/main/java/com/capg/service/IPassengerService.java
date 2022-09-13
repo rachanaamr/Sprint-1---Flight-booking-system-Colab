@@ -2,8 +2,6 @@ package com.capg.service;
 
 import java.util.*;
 
-import org.springframework.stereotype.Repository;
-
 import com.capg.entities.Passenger;
 
 

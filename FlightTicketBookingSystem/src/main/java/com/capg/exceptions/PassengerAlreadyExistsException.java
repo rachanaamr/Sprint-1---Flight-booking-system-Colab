@@ -1,8 +1,8 @@
 package com.capg.exceptions;
 
 public class PassengerAlreadyExistsException extends RuntimeException{
-	
-	private String message;
+
+	private static final long serialVersionUID = 1L;
 
 	public PassengerAlreadyExistsException() {
 
@@ -10,6 +10,5 @@ public class PassengerAlreadyExistsException extends RuntimeException{
 
 	public PassengerAlreadyExistsException(String message) {
 		super(message);
-		this.message = message;
 	}
 }

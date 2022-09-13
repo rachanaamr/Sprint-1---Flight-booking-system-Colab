@@ -25,7 +25,7 @@ public class UserController {
 	private IUserService userService;
 	
 	@GetMapping("/home")
-	public String Home() {
+	public String home() {
 		return "Welcome to user application of flight booking system";
 	}
 

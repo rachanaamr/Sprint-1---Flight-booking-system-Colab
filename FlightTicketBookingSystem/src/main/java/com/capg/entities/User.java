@@ -10,7 +10,6 @@ import javax.persistence.Table;
 public class User {
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="userid")
 	private int userId;
 	@Column(name="firstname")
@@ -25,7 +24,6 @@ public class User {
 	private String contactNo;
 	public User() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 	public User(int userId, String firstName,String lastName, String email, String password, String contactNo) {
 		super();
@@ -77,8 +75,6 @@ public class User {
 		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName +", email=" + email
 				+ ", password=" + password + ", contactNo=" + contactNo + "]";
 	}
-	
-	
 	
 
 }

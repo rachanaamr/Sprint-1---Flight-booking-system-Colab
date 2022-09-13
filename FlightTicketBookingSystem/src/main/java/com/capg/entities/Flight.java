@@ -10,7 +10,6 @@ import javax.persistence.Table;
 public class Flight {
 	
 	@Id
-	//@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name ="flightid")
 	int flightId;
 	@Column(name ="source")
@@ -25,11 +24,10 @@ public class Flight {
 	String date;
 	@Column(name ="fare")
 	double fare;
-	//double duration;
 	@Column(name ="availableseats")
 	int availableSeats;
 	public Flight(int flightId, String sourceLocation, String destinationLocation, String arrivalTime,
-			String departureTime, String date, double fare, /*double duration,*/ int availableSeats) {
+			String departureTime, String date, double fare, int availableSeats) {
 		super();
 		this.flightId = flightId;
 		this.sourceLocation = sourceLocation;
@@ -38,13 +36,11 @@ public class Flight {
 		this.departureTime = departureTime;
 		this.date = date;
 		this.fare = fare;
-		//this.duration = duration;
 		this.availableSeats = availableSeats;
 	}
 	
 	public Flight() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	public int getFlightId() {
@@ -90,12 +86,6 @@ public class Flight {
 	public void setFare(double fare) {
 		this.fare = fare;
 	}
-	/*public double getDuration() {
-		return duration;
-	}
-	public void setDuration(double duration) {
-		this.duration = duration;
-	}*/
 	public int getAvailableSeats() {
 		return availableSeats;
 	}

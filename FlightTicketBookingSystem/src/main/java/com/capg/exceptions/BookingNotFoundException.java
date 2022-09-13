@@ -2,15 +2,14 @@ package com.capg.exceptions;
 
 public class BookingNotFoundException extends RuntimeException{
 	
-	private String message;
-	
+	private static final long serialVersionUID = 1L;
+
 	public BookingNotFoundException() {
 		
 	}
 	
 	public BookingNotFoundException(String message) {
 		super(message);
-		this.message=message;
 	}
 	
 }
