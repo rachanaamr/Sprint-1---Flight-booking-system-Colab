@@ -2,8 +2,6 @@ package com.capg.entities;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -38,7 +36,7 @@ public class User {
 		this.password = password;
 		this.contactNo = contactNo;
 	}
-	public long getUserId() {
+	public int getUserId() {
 		return userId;
 	}
 	public void setUserId(int userId) {

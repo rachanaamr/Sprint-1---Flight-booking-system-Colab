@@ -3,8 +3,6 @@ package com.capg.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.service.IBookingService;
 import com.capg.entities.*;
+import com.capg.exceptions.BookingAlreadyExistsException;
+import com.capg.exceptions.BookingNotFoundException;
 
 
 
@@ -28,19 +28,19 @@ public class BookingController {
 		return this.service.getBooking();
 	}
 	@GetMapping("/booking/{bookingId}")
-	public Booking getEmployeeById(@PathVariable int bookingId) {
+	public Booking getEmployeeById(@PathVariable int bookingId) throws BookingNotFoundException{
 		return this.service.getBookingById(bookingId);
 	}
 	@PostMapping("/booking")
-	public Booking addBooking(@RequestBody Booking booking) {
+	public Booking addBooking(@RequestBody Booking booking) throws BookingAlreadyExistsException{
 		return this.service.addBooking(booking);
 	}
 	@PutMapping("/booking")
-	public Booking updateEmployee(@RequestBody Booking booking) {
+	public Booking updateEmployee(@RequestBody Booking booking) throws BookingNotFoundException{
 		return this.service.updateBooking(booking);
 	}
 	@DeleteMapping("/booking/{bookingId}")
-	public void deleteEmployee(@PathVariable int bookingId) {
+	public void deleteEmployee(@PathVariable int bookingId) throws BookingNotFoundException{
 		
 		this.service.deleteBooking(bookingId);
 		

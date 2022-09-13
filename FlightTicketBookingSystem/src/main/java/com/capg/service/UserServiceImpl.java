@@ -1,14 +1,13 @@
 package com.capg.service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.capg.dao.IUserDao;
 import com.capg.entities.User;
+import com.capg.exceptions.UserAlreadyExistsException;
+import com.capg.exceptions.UserNotFoundException;
 
 @Service
 public class UserServiceImpl implements IUserService{
@@ -24,13 +23,18 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public User getUser(int userId) {
 		// TODO Auto-generated method stub
-		
+		if(userDao.findById(userId).isEmpty()) {
+			throw new UserNotFoundException();
+		}
 		return userDao.findById(userId).get();
 	}
 
 	@Override
 	public User addUser(User user) {
 		// TODO Auto-generated method stub
+		if(userDao.existsById(user.getUserId())) {
+			throw new UserAlreadyExistsException();
+		}
 		userDao.save(user);
 		return user;
 	}
@@ -38,6 +42,9 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public User updateUser(User user) {
 		// TODO Auto-generated method stub
+		if(userDao.findById(user.getUserId()).isEmpty()) {
+			throw new UserNotFoundException();
+		}
 		userDao.save(user);
 		return user;
 	}
@@ -45,6 +52,9 @@ public class UserServiceImpl implements IUserService{
 	@Override
 	public void deleteUser(int userId) {
 		// TODO Auto-generated method stub
+		if(userDao.findById(userId).isEmpty()) {
+			throw new UserNotFoundException();
+		}
 		User u = userDao.getOne(userId);
 		userDao.delete(u);
 	}

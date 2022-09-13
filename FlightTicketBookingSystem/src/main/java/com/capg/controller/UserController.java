@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.capg.entities.User;
+import com.capg.exceptions.UserAlreadyExistsException;
+import com.capg.exceptions.UserNotFoundException;
 import com.capg.service.IUserService;
 
 @RestController
@@ -35,25 +37,25 @@ public class UserController {
 	
 	//get user having specific userid
 	@GetMapping("/users/{userId}")
-	public User getUser(@PathVariable int userId) {
+	public User getUser(@PathVariable int userId) throws UserNotFoundException{
 		return this.userService.getUser(userId);
 	}
 	
 	//add a new user into user dataset
 	@PostMapping("/users")
-	public User addUser(@RequestBody User user) {
+	public User addUser(@RequestBody User user) throws UserAlreadyExistsException{
 		return this.userService.addUser(user);
 	}
 	
 	//update user using userid
 	@PutMapping("/users")
-	public User updateUser(@RequestBody User user) {
+	public User updateUser(@RequestBody User user) throws UserNotFoundException{
 		return this.userService.updateUser(user);
 	}
 	
 	//delete the user
 	@DeleteMapping("/users/{userId}")
-	public ResponseEntity<HttpStatus> deleteUser(@PathVariable int userId){
+	public ResponseEntity<HttpStatus> deleteUser(@PathVariable int userId)throws UserNotFoundException{
 		try {
 			this.userService.deleteUser(userId);
 			return new ResponseEntity<>(HttpStatus.OK);
