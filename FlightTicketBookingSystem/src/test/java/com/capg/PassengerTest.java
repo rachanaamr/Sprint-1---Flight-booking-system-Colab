@@ -48,15 +48,16 @@ class PassengerTest {
 		b.setFlight(f);
 		b.setUser(u);
 		p.setBooking(b);
-		assertEquals(userDao.findById(111).get().toString(),u.toString());
-		assertEquals(flightDao.findById(222).get().toString(),f.toString());
-//		Booking book=bookingDao.findById(333).get();
-//		assertEquals(book.getBookingId(),b.getBookingId());
-//		assertEquals(book.getBookingDate(),b.getBookingDate());
-//		assertEquals(book.getUser().toString(),u.toString());
-//		assertEquals(book.getFlight().toString(),f.toString());
-//		assertEquals(book.getSeatsBooked(),b.getSeatsBooked());
-		assertEquals(passengerDao.findById(444).get().toString(),p.toString());
+		
+		Passenger pass=passengerDao.findById(444).get();
+		assertEquals(pass.getPassengerId(),p.getPassengerId());
+		assertEquals(pass.getFirstName(),p.getFirstName());
+		assertEquals(pass.getLastName(),p.getLastName());
+		assertEquals(pass.getAge(),p.getAge());
+		assertEquals(pass.getGender(),p.getGender());
+		assertEquals(pass.getPassportNumber(),p.getPassportNumber());
+		assertEquals(pass.getSeatNumber(),p.getSeatNumber());
+		assertEquals(pass.getBooking().toString(),b.toString());
 		
 		
 	}
